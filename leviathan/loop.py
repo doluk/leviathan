@@ -32,7 +32,7 @@ class ExceptionContext(TypedDict):
     asyncgen: NotRequired[AsyncGenerator[Any]]
 
 
-class Loop(_Loop):  # type: ignore
+class Loop(_Loop, asyncio.AbstractEventLoop):  # type: ignore
     def __init__(self, ready_tasks_queue_min_bytes_capacity: int = 10**6) -> None:
         _Loop.__init__(
             self, ready_tasks_queue_min_bytes_capacity, self._call_exception_handler
