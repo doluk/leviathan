@@ -68,7 +68,7 @@ pub const BlockingTasksSet = struct {
 
         const node = self.node;
 
-        self.ring.unregister_eventfd() catch unreachable;
+        // self.ring.unregister_eventfd() catch unreachable;
         std.posix.close(self.eventfd);
 
         self.ring.deinit();
